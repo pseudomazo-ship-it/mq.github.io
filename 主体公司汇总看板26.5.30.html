@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蒙倩 · 主体公司营销支出统计</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'PingFang SC','Microsoft YaHei',sans-serif;background:#f5f5f7;color:#1e293b;padding:20px}
+.container{max-width:1660px;margin:0 auto}
+.hd{background:#fff;border-radius:12px;padding:18px 24px;box-shadow:0 1px 6px rgba(0,0,0,.05);margin-bottom:16px}
+.hd h1{font-size:22px;font-weight:700}
+.hd p{color:#6b7280;font-size:13px;margin-top:3px}
+.rules{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;font-size:12px}
+.rules span{display:flex;align-items:center;gap:5px;padding:4px 10px;border-radius:6px;background:#f8f9fa;border:1px solid #e5e7eb}
+.zone-box{margin-top:8px;padding:10px 14px;background:#f0fdf4;border-radius:8px;font-size:12px;color:#166534;border:1px solid #bbf7d0;line-height:1.7}
+.zone-box strong{color:#15803d}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px;margin-bottom:16px}
+.card{background:#fff;border-radius:10px;padding:12px 16px;box-shadow:0 1px 4px rgba(0,0,0,.04);border:1px solid #eee}
+.card .lb{font-size:11px;color:#6b7280;margin-bottom:3px}
+.card .val{font-size:24px;font-weight:700}
+.tw{background:#fff;border-radius:12px;box-shadow:0 1px 6px rgba(0,0,0,.05);overflow:hidden}
+.tw .thd{display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border-bottom:1px solid #e5e7eb;font-size:14px;font-weight:600}
+.tw .thd input{border:1px solid #d1d5db;border-radius:6px;padding:5px 10px;font-size:12px;width:180px;outline:none}
+.tw .thd input:focus{border-color:#3b82f6}
+.filter-bar{display:flex;gap:4px;padding:8px 16px;border-bottom:1px solid #e5e7eb;flex-wrap:wrap;align-items:center}
+.filter-bar .flt-lb{font-size:11px;color:#6b7280;margin-right:8px;font-weight:600}
+.flt{padding:4px 12px;border-radius:6px;cursor:pointer;font-size:12px;background:#f8f9fa;border:1px solid #d1d5db;color:#374151;transition:all .15s}
+.flt:hover{background:#e5e7eb}
+.flt.act{background:#2563eb;color:#fff;border-color:#2563eb}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#f8fafc;padding:7px 5px;text-align:right;font-weight:600;color:#64748b;font-size:10.5px;border-bottom:2px solid #e2e8f0;white-space:nowrap;position:sticky;top:0}
+th:first-child{text-align:left;padding-left:12px;min-width:210px}
+th:nth-child(2){text-align:left;padding-left:4px;min-width:90px}
+td{padding:6px 5px;text-align:right;border-bottom:1px solid #f1f5f9;white-space:nowrap}
+td:first-child{font-weight:600;padding-left:12px;color:#1e293b;font-size:12px}
+td:nth-child(2){text-align:left;color:#64748b;font-size:10.5px;max-width:150px;overflow:hidden;text-overflow:ellipsis}
+tr:hover{background:#f8fafc}
+.sb{display:inline-block;padding:1px 8px;border-radius:10px;font-size:11px;font-weight:600}
+.s0{background:#dcfce7;color:#16a34a}
+.s1{background:#fef3c7;color:#d97706}
+.s2{background:#fee2e2;color:#dc2626}
+.ri{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:2px;vertical-align:middle}
+.ri-l{background:#93c5fd}
+.ri-ok{background:#22c55e}
+.ri-hi{background:#ef4444}
+.footer{text-align:center;padding:16px;color:#9ca3af;font-size:11px;margin-top:14px}
+</style>
+</head>
+<body>
+<div class="container">
+
+<div class="hd">
+  <h1>蒙倩 · 主体公司营销支出统计</h1>
+  <p>按主体公司汇总 · 支出占比安全区间判定（中心值&plusmn;10%）</p>
+  <div class="rules">
+    <span><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#16a34a"></span> 总销售&le;25万 安全</span>
+    <span><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#d97706"></span> 总销售&gt;25万 需发票</span>
+    <span><span style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#dc2626"></span> 总销售&ge;400万 超标主体</span>
+    <span><span class="ri ri-ok"></span> 占比安全</span>
+    <span><span class="ri ri-l"></span> 占比偏低</span>
+    <span><span class="ri ri-hi"></span> 占比超标</span>
+  </div>
+  <div class="zone-box">
+    <strong>各项支出安全区间（中心值 &plusmn;10%）：</strong>
+    推广费 33.1% (29.8% ~ 36.4%) &nbsp;|&nbsp;
+    技术服务 2.5% (2.3% ~ 2.8%) &nbsp;|&nbsp;
+    仓储快递 8.7% (7.8% ~ 9.6%) &nbsp;|&nbsp;
+    货款成本 26.76% (24.1% ~ 29.4%)
+  </div>
+</div>
+
+<div class="cards">
+  <div class="card"><div class="lb">主体公司</div><div class="val" id="ec">-</div></div>
+  <div class="card"><div class="lb">总销售额</div><div class="val" style="color:#2563eb" id="tr">-</div></div>
+  <div class="card"><div class="lb">(OK) 安全</div><div class="val" style="color:#16a34a" id="sc">-</div></div>
+  <div class="card"><div class="lb">(WARN) 需发票</div><div class="val" style="color:#d97706" id="wc">-</div></div>
+  <div class="card"><div class="lb">超标主体</div><div class="val" style="color:#dc2626" id="dc">-</div></div>
+</div>
+
+<div class="tw">
+  <div class="thd">
+    <span>主体公司明细表 &nbsp;<span style="font-size:11px;color:#6b7280;font-weight:400"><span class="ri ri-l"></span>偏低 <span class="ri ri-ok"></span>安全 <span class="ri ri-hi"></span>超标</span></span>
+    <div><input id="si" placeholder="搜索主体公司..." oninput="doRender()"></div>
+  </div>
+  <div class="filter-bar">
+    <span class="flt-lb">公司经营状态：</span>
+    <button class="flt act" onclick="setFlt('status','all')">全部</button>
+    <button class="flt" onclick="setFlt('status','safe')">(OK) 安全</button>
+    <button class="flt" onclick="setFlt('status','warn')">(WARN) 需发票</button>
+    <button class="flt" onclick="setFlt('status','danger')">超标主体</button>
+  </div>
+  <div class="scroll">
+    <table><thead><tr>
+      <th style="text-align:left">主体公司</th>
+      <th style="text-align:left">关联店铺</th>
+      <th>总销售额</th>
+      <th>推广费</th>
+      <th>推广比</th>
+      <th>技术服务</th>
+      <th>技术比</th>
+      <th>仓储快递</th>
+      <th>仓储比</th>
+      <th>货款支出</th>
+      <th>货款比</th>
+      <th>其他支出</th>
+      <th>总支出</th>
+      <th>总支比</th>
+      <th>状态</th>
+    </tr></thead>
+    <tbody id="tb"></tbody></table>
+  </div>
+</div>
+<div class="footer">AI财务助手「三哥」 | 数据源：主体业绩情况看板.xlsx</div>
+</div>
+
+<script>
+const D = [{"name": "徐州市镭聚商贸有限公司", "stores": ["蒙倩个护官方旗舰店", "蒙倩官方旗舰店"], "plat": ["拼多多"], "cnt": 16, "rev": 7767094, "promo": 2847191, "tech": 164540, "stor": 0, "goods": 0, "oth": 0, "peak_m": "7月", "peak_v": 1015038}, {"name": "徐州市诗澳沂运输有限公司", "stores": ["蒙倩诗丽专卖店（京东）", "蒙倩化妆品官方旗舰店", "蒙倩染发品牌（快手）"], "plat": ["拼多多", "快手", "京东"], "cnt": 28, "rev": 6796121, "promo": 2113546, "tech": 127004, "stor": 742161, "goods": 1023050, "oth": 0, "peak_m": "2月", "peak_v": 1237948}, {"name": "新沂市盼月亮物流有限公司", "stores": ["蒙倩美容护肤官方旗舰店", "蒙倩洗护官方旗舰店", "蒙倩彩妆官方旗舰店"], "plat": ["拼多多"], "cnt": 22, "rev": 5169656, "promo": 1912142, "tech": 75267, "stor": 0, "goods": 0, "oth": 0, "peak_m": "1月", "peak_v": 391645}, {"name": "新沂市田螺物流有限公司", "stores": ["蒙倩染发旗舰店", "蒙倩美容美发官方旗舰店", "蒙倩精油官方旗舰店"], "plat": ["拼多多"], "cnt": 22, "rev": 4684979, "promo": 1732248, "tech": 87617, "stor": 0, "goods": 0, "oth": 0, "peak_m": "1月", "peak_v": 520925}, {"name": "新沂市涛之叶种植有限公司", "stores": ["蒙倩美发官方旗舰店", "蒙倩涛道染发造型专卖店（抖音）"], "plat": ["拼多多", "抖音"], "cnt": 14, "rev": 4647948, "promo": 1584292, "tech": 79983, "stor": 477965, "goods": 1627050, "oth": 0, "peak_m": "2月", "peak_v": 1246613}, {"name": "新沂市虞兮新能源有限公司", "stores": ["蒙倩洗护官方旗舰店", "蒙倩美妆旗舰店", "蒙倩药妆官方旗舰店"], "plat": ["拼多多"], "cnt": 20, "rev": 4564026, "promo": 1669913, "tech": 127891, "stor": 0, "goods": 0, "oth": 0, "peak_m": "7月", "peak_v": 558265}, {"name": "新沂市盼快物流有限公司", "stores": ["蒙倩旗舰店"], "plat": ["拼多多"], "cnt": 8, "rev": 4531720, "promo": 1563662, "tech": 69842, "stor": 599000, "goods": 1238934, "oth": 0, "peak_m": "2月", "peak_v": 954455}, {"name": "新沂市羽涅植物种植有限公司", "stores": ["蒙倩美发护发官方旗舰店", "蒙倩美容美发官方旗舰店", "蒙倩护发旗舰店"], "plat": ["拼多多"], "cnt": 14, "rev": 4310403, "promo": 1627780, "tech": 106542, "stor": 0, "goods": 0, "oth": 0, "peak_m": "8月", "peak_v": 589107}, {"name": "新沂珍小样仓储物流有限公司", "stores": ["蒙倩美发护发官方旗舰店"], "plat": ["拼多多"], "cnt": 6, "rev": 4270296, "promo": 1510621, "tech": 87764, "stor": 48000, "goods": 1936050, "oth": 0, "peak_m": "2月", "peak_v": 1352635}, {"name": "徐州市珍影商贸有限公司", "stores": ["蒙倩旗舰店", "蒙倩美容护肤官方旗舰店"], "plat": ["拼多多"], "cnt": 5, "rev": 2880332, "promo": 983897, "tech": 106612, "stor": 0, "goods": 0, "oth": 0, "peak_m": "7月", "peak_v": 1110152}, {"name": "徐州市戈丂商贸有限公司", "stores": ["蒙倩旗舰店（天猫）", "蒙倩美发官方旗舰店"], "plat": ["拼多多", "天猫"], "cnt": 12, "rev": 2743495, "promo": 943768, "tech": 96521, "stor": 0, "goods": 0, "oth": 0, "peak_m": "7月", "peak_v": 1094091}, {"name": "徐州市泫泫农业有限公司", "stores": ["（得物1）徐州市泫泫农业有限公司", "蒙倩化妆品官方旗舰店", "蒙倩造型官方旗舰店"], "plat": ["拼多多", "得物"], "cnt": 11, "rev": 2452615, "promo": 813308, "tech": 100231, "stor": 0, "goods": 0, "oth": 0, "peak_m": "7月", "peak_v": 1548234}, {"name": "新沂炜之康美容有限公司", "stores": ["蒙倩护发旗舰店"], "plat": ["拼多多"], "cnt": 6, "rev": 2005418, "promo": 663503, "tech": 34361, "stor": 0, "goods": 0, "oth": 0, "peak_m": "2月", "peak_v": 534034}, {"name": "徐州市耋饕商贸有限公司", "stores": ["蒙倩染发旗舰店", "蒙倩涛道染发造型专卖店（抖音）", "蒙倩精油官方旗舰店", "蒙倩彩妆官方旗舰店"], "plat": ["拼多多", "抖音"], "cnt": 10, "rev": 1996735, "promo": 672560, "tech": 79821, "stor": 0, "goods": 0, "oth": 0, "peak_m": "7月", "peak_v": 396911}, {"name": "新沂卓略咨询服务有限公司", "stores": ["蒙倩官方旗舰店"], "plat": ["拼多多"], "cnt": 3, "rev": 1757229, "promo": 538188, "tech": 13545, "stor": 68230, "goods": 1255800, "oth": 0, "peak_m": "2月", "peak_v": 689580}, {"name": "襄阳雅芝化妆品有限公司", "stores": ["襄阳雅芝化妆品有限公司（1688）", "蒙倩染发旗舰店（京东）"], "plat": ["1688", "京东"], "cnt": 14, "rev": 1036085, "promo": 44671, "tech": 6322, "stor": 518357, "goods": 505912, "oth": 0, "peak_m": "3月", "peak_v": 163009}, {"name": "徐州雪之草物流有限公司", "stores": ["蒙倩染发旗舰店"], "plat": ["拼多多"], "cnt": 3, "rev": 705130, "promo": 192524, "tech": 11884, "stor": 0, "goods": 313700, "oth": 0, "peak_m": "3月", "peak_v": 373515}, {"name": "徐州市磊子帆宠物护理有限公司", "stores": ["蒙倩化妆品官方旗舰店"], "plat": ["拼多多"], "cnt": 2, "rev": 672039, "promo": 212107, "tech": 4904, "stor": 461277, "goods": 552050, "oth": 97976, "peak_m": "4月", "peak_v": 499381}, {"name": "徐州鲁启种子有限公司", "stores": ["蒙倩美妆旗舰店"], "plat": ["拼多多"], "cnt": 3, "rev": 665403, "promo": 228673, "tech": 12531, "stor": 85000, "goods": 0, "oth": 0, "peak_m": "4月", "peak_v": 315185}, {"name": "新沂明小流物流有限公司", "stores": ["蒙倩个护官方旗舰店"], "plat": ["拼多多"], "cnt": 3, "rev": 547678, "promo": 146547, "tech": 6159, "stor": 0, "goods": 98630, "oth": 0, "peak_m": "3月", "peak_v": 276782}, {"name": "徐州露枣教育咨询有限公司", "stores": ["蒙倩个人护理官方旗舰店", "蒙倩彩妆官方旗舰店"], "plat": ["拼多多"], "cnt": 4, "rev": 523571, "promo": 197705, "tech": 4132, "stor": 0, "goods": 0, "oth": 0, "peak_m": "4月", "peak_v": 299952}, {"name": "新沂市攀七花物流有限公司", "stores": ["MengQian蒙倩旗舰店（小红书）", "蒙倩染发膏旗舰店（小红书）", "蒙倩旗舰店（小红书）", "（得物2）新沂市攀七花物流有限公司"], "plat": ["得物", "小红书"], "cnt": 29, "rev": 482706, "promo": 28492, "tech": 61095, "stor": 0, "goods": 0, "oth": 0, "peak_m": "1月", "peak_v": 42818}, {"name": "徐州修宋种植有限公司", "stores": ["蒙倩美容护肤官方旗舰店"], "plat": ["拼多多"], "cnt": 2, "rev": 472397, "promo": 157589, "tech": 3179, "stor": 98764, "goods": 58600, "oth": 0, "peak_m": "4月", "peak_v": 272669}, {"name": "徐州丽之夜物流有限公司", "stores": ["蒙倩美发官方旗舰店"], "plat": ["拼多多"], "cnt": 1, "rev": 371313, "promo": 155122, "tech": 2284, "stor": 122920, "goods": 85000, "oth": 11776, "peak_m": "4月", "peak_v": 371313}, {"name": "徐州童雅化妆品有限公司", "stores": ["蒙倩洗护官方旗舰店"], "plat": ["拼多多"], "cnt": 1, "rev": 286329, "promo": 99812, "tech": 2778, "stor": 0, "goods": 0, "oth": 0, "peak_m": "4月", "peak_v": 286329}, {"name": "徐州齐不来教育咨询有限公司", "stores": ["蒙倩造型官方旗舰店"], "plat": ["拼多多"], "cnt": 3, "rev": 269208, "promo": 94973, "tech": 2313, "stor": 0, "goods": 0, "oth": 0, "peak_m": "4月", "peak_v": 95853}, {"name": "徐州诗丽物流有限公司", "stores": ["蒙倩染发品牌（快手）", "蒙倩诗丽专卖店（京东）", "蒙倩精油官方旗舰店"], "plat": ["拼多多", "快手", "京东"], "cnt": 4, "rev": 212645, "promo": 73383, "tech": 1471, "stor": 0, "goods": 0, "oth": 0, "peak_m": "4月", "peak_v": 125800}, {"name": "襄阳旖旎化妆品有限公司", "stores": ["蒙倩染发旗舰店（京东）", "蒙倩官方旗舰店（抖音）", "蒙倩蒙倩（微信小店）"], "plat": ["微信小店", "抖音", "京东"], "cnt": 25, "rev": 207126, "promo": 35913, "tech": 11106, "stor": 0, "goods": 0, "oth": 0, "peak_m": "8月", "peak_v": 22970}, {"name": "徐州涛道花卉有限公司", "stores": ["蒙倩美妆洗护官方旗舰店"], "plat": ["拼多多"], "cnt": 2, "rev": 115705, "promo": 42844, "tech": 3253, "stor": 0, "goods": 0, "oth": 0, "peak_m": "4月", "peak_v": 86725}, {"name": "徐州江雅种植有限公司", "stores": ["蒙倩药妆官方旗舰店"], "plat": ["拼多多"], "cnt": 3, "rev": 94908, "promo": 38395, "tech": 648, "stor": 0, "goods": 0, "oth": 0, "peak_m": "3月", "peak_v": 47378}, {"name": "徐州珍齐种植有限公司", "stores": ["蒙倩美发旗舰店"], "plat": ["拼多多"], "cnt": 2, "rev": 26282, "promo": 10008, "tech": 613, "stor": 0, "goods": 0, "oth": 0, "peak_m": "4月", "peak_v": 21450}, {"name": "徐州盼雪种植有限公司", "stores": ["蒙倩护发官方旗舰店"], "plat": ["拼多多"], "cnt": 2, "rev": 18567, "promo": 9442, "tech": 239, "stor": 0, "goods": 0, "oth": 0, "peak_m": "4月", "peak_v": 16772}, {"name": "徐州盼英花卉有限公司", "stores": ["蒙倩美发护发旗舰店"], "plat": ["拼多多"], "cnt": 2, "rev": 14947, "promo": 7545, "tech": 158, "stor": 0, "goods": 0, "oth": 0, "peak_m": "4月", "peak_v": 13005}, {"name": "徐州童英宠物有限公司", "stores": ["蒙倩染发官方旗舰店"], "plat": ["拼多多"], "cnt": 2, "rev": 11132, "promo": 4364, "tech": 116, "stor": 0, "goods": 0, "oth": 0, "peak_m": "4月", "peak_v": 9297}, {"name": "徐州宋卢宠物有限公司", "stores": [], "plat": [], "cnt": 0, "rev": 0, "promo": 0, "tech": 0, "stor": 0, "goods": 89000, "oth": 0, "peak_m": "", "peak_v": 0}];
+
+const R = {
+  promo: {lo: 33.1*0.9, hi: 33.1*1.1},
+  tech:  {lo: 2.5*0.9, hi: 2.5*1.1},
+  stor:  {lo: 8.7*0.9, hi: 8.7*1.1},
+  goods: {lo: 26.76*0.9, hi: 26.76*1.1},
+};
+
+var fltStatus='all';
+
+function r2(n){return Math.round(n*10)/10}
+function fm(n){if(!n&&n!==0)return'-';return '&#165;'+Math.round(n).toLocaleString()}
+function ri(v, lo, hi){
+  var cls='ri-ok';
+  if(v < lo) cls='ri-l';
+  else if(v > hi) cls='ri-hi';
+  return '<span class="ri '+cls+'"></span>'+r2(v)+'%';
+}
+
+function getStatus(r){
+  if(r.rev>=4000000)return 'danger';
+  if(r.rev>250000)return 'warn';
+  return 'safe';
+}
+
+function setFlt(type, val){
+  fltStatus=val;
+  document.querySelectorAll('.flt').forEach(function(b){b.classList.remove('act');});
+  event.target.classList.add('act');
+  doRender();
+}
+
+function doRender(){
+  var q=document.getElementById('si').value;
+  var h='',ec=0,sc=0,wc=0,dc=0,tr=0;
+  D.forEach(function(r){
+    // Status filter
+    var st=getStatus(r);
+    if(fltStatus!=='all'&&fltStatus!==st)return;
+    // Search
+    if(q&&!r.name.includes(q))return;
+
+    ec++;tr+=r.rev;
+    var pe=r.promo+r.tech+r.stor+r.goods+r.oth;
+    var pp=r.rev>0?r2(r.promo/r.rev*100):0;
+    var tp=r.rev>0?r2(r.tech/r.rev*100):0;
+    var sp=r.rev>0?r2(r.stor/r.rev*100):0;
+    var gp=r.rev>0?r2(r.goods/r.rev*100):0;
+    var op=r.rev>0?r2(r.oth/r.rev*100):0;
+    var ep=r.rev>0?r2(pe/r.rev*100):0;
+
+    var si='0',sl='OK 安全';
+    if(r.rev>=4000000){si='2';sl='超标主体';dc++;}
+    else if(r.rev>250000){si='1';sl='WARN 需发票';wc++;}
+    else{sc++;}
+
+    var c=si==='2'?'#dc2626':si==='1'?'#d97706':'#16a34a';
+    h+='<tr>'+
+      '<td>'+r.name+'</td>'+
+      '<td style="font-size:10.5px">'+r.stores.join('、')+'</td>'+
+      '<td style="font-weight:700;color:'+c+'">'+fm(r.rev)+'</td>'+
+      '<td>'+fm(r.promo)+'</td><td style="color:#f97316">'+ri(pp,R.promo.lo,R.promo.hi)+'</td>'+
+      '<td>'+fm(r.tech)+'</td><td style="color:#eab308">'+ri(tp,R.tech.lo,R.tech.hi)+'</td>'+
+      '<td>'+fm(r.stor)+'</td><td style="color:#3b82f6">'+ri(sp,R.stor.lo,R.stor.hi)+'</td>'+
+      '<td>'+fm(r.goods)+'</td><td style="color:#22c55e">'+ri(gp,R.goods.lo,R.goods.hi)+'</td>'+
+      '<td>'+fm(r.oth)+'</td>'+
+      '<td style="font-weight:600">'+fm(pe)+'</td>'+
+      '<td style="font-weight:700;color:#6366f1">'+ep+'%</td>'+
+      '<td><span class="sb s'+si+'">'+sl+'</span></td>'+
+    '</tr>';
+  });
+  document.getElementById('tb').innerHTML=h;
+  document.getElementById('ec').textContent=ec;
+  document.getElementById('tr').textContent=fm(tr);
+  document.getElementById('sc').textContent=sc;
+  document.getElementById('wc').textContent=wc;
+  document.getElementById('dc').textContent=dc;
+}
+doRender();
+</script>
+</body>
+</html>
